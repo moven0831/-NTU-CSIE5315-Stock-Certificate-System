@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Free React landing page template
 
 ![Open React template preview](https://user-images.githubusercontent.com/2683512/78789364-545e7100-79ad-11ea-9e3c-9528c99cda8e.png)
@@ -138,3 +139,6 @@ We're an Italian developer/designer duo creating high-quality design/code resour
 ## Stay in the loop
 
 If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
+=======
+# [NTU-CSIE5315] Stock-Certificate-System
+>>>>>>> d0a0fbc8c72cfd710921f5c37e2a82c01a103a61
