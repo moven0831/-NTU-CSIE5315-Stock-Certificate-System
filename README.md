@@ -1,1 +1,1 @@
-# -NTU-CSIE5315-Stock-Certificate-System
+# [NTU-CSIE5315] Stock-Certificate-System
