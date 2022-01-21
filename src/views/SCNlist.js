@@ -6,7 +6,7 @@ import FeaturesSplit from '../components/sections/FeaturesSplit';
 import Testimonial from '../components/sections/Testimonial';
 import Cta from '../components/sections/Cta';
 
-const GetStarted = () => {
+const SCNlist = () => {
 
   return (
     <>
@@ -19,4 +19,4 @@ const GetStarted = () => {
   );
 }
 
-export default GetStarted;
+export default SCNlist;
