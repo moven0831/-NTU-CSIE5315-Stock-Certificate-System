@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Logo from './partials/Logo';
 import Button from '../elements/Button'
 import ButtonGroup from '../elements/ButtonGroup'
+import AppContext from '../AppContext';
 
 const propTypes = {
   navPosition: PropTypes.string,
@@ -76,6 +77,18 @@ const Header = ({
     className
   );
 
+  const myContext = useContext(AppContext);
+
+  const renderlogin = () => {
+    if (myContext.loginpublicaddress !== "" && myContext.loginpressed === true){
+      return (<div>&nbsp;&nbsp;&nbsp;&nbsp;Logined as {myContext.loginpublicaddress}</div>);
+    } else {
+      return (<Button tag="a" color="primary" wideMobile href="/login">
+              Login
+              </Button>);
+    }
+  }
+
   return (
     <header
       {...props}
@@ -123,9 +136,7 @@ const Header = ({
                     <ul
                       className="list-reset header-nav-right"
                     >
-                      <Button tag="a" color="primary" wideMobile href="/login">
-                        Login
-                        </Button>
+                      {renderlogin()}
                     </ul>}
                 </div>
               </nav>

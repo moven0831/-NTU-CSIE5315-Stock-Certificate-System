@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { SectionProps } from '../utils/SectionProps';
+import AppContext from '../components/AppContext';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -11,7 +12,7 @@ import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
+import { makeStyles } from "@mui/styles";
 
 const propTypes = {
   children: PropTypes.node,
@@ -22,6 +23,20 @@ const defaultProps = {
   children: null,
   ...SectionProps.defaults
 }
+
+const useStyles = makeStyles({
+  root: {
+    "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "gray"
+    },
+    "&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+      borderColor: "white"
+    },
+    "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "#0072BB"
+    }
+  }
+});
 
 const SignUp = ({
   className,
@@ -50,15 +65,24 @@ const SignUp = ({
     bottomDivider && 'has-bottom-divider'
   );
 
+  const myContext = useContext(AppContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
     console.log({
-      email: data.get('email'),
+      publicaddress: data.get('public'),
       password: data.get('password'),
     });
+
+    console.log({
+      publicaddress: myContext.publicaddress,
+      password: myContext.password,
+    });
   };
+
+  const classes = useStyles();
 
   return (
     <section
@@ -115,7 +139,8 @@ const SignUp = ({
                     id="firstName"
                     label="First Name"
                     autoFocus
-                    sx={{ label: { color: '#ffffffdb' }}}
+                    className={classes.root}
+                    sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -126,18 +151,21 @@ const SignUp = ({
                     label="Last Name"
                     name="lastName"
                     autoComplete="family-name"
-                    sx={{ label: { color: '#ffffffdb' }}}
+                    className={classes.root}
+                    sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                    sx={{ label: { color: '#ffffffdb' }}}
+                    id="public"
+                    label="Public Address"
+                    name="public"
+                    autoComplete="public"
+                    className={classes.root}
+                    onChange={(event) => myContext.setPublicaddress(event.target.value)}
+                    sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -149,7 +177,9 @@ const SignUp = ({
                     type="password"
                     id="password"
                     autoComplete="new-password"
-                    sx={{ label: { color: '#ffffffdb' }}}
+                    className={classes.root}
+                    onChange={(event) => myContext.setPassword(event.target.value)}
+                    sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
                   />
                 </Grid>
               </Grid>
@@ -158,6 +188,7 @@ const SignUp = ({
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                href="/login"
               >
                 Sign Up
               </Button>

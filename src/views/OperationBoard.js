@@ -40,7 +40,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Login = ({
+const OperationBoard = ({
   className,
   children,
   topOuterDivider,
@@ -93,6 +93,8 @@ const Login = ({
 
   const classes = useStyles();
 
+  
+
   return (
     <section
       {...props}
@@ -102,7 +104,7 @@ const Login = ({
         <div className={innerClasses}>
           <div className="hero-content">
             <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200" style={{ textAlign: 'center' }}>
-              <span className="text-color-primary">Login</span> for your
+              <span className="text-color-primary">Function DashBoard</span> for your
               <ul>Stock Certificate System</ul>
             </h1>
           </div>
@@ -131,57 +133,78 @@ const Login = ({
                   alignItems: 'center'
               }}
               >
-              <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
-              </Avatar>
               <Typography component="h1" variant="h5" style={{color: 'cornflowerblue'}}>
-                  Login
+                  Function DashBoard
               </Typography>
                   <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                       <TextField
                       margin="normal"
                       required
                       fullWidth
-                      id="public"
-                      label="Public Address"
-                      name="public"
-                      autoComplete="public"
+                      id="Issue Amount"
+                      label="Issue Amount"
+                      name="Issue Amount"
+                      autoComplete="Issue Amount"
                       autoFocus
                       flex
                       className={classes.root}
-                      onChange={(event) => myContext.setLoginpublicaddress(event.target.value)}
                       sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
-                      />
-                      <TextField
-                      margin="normal"
-                      required
-                      fullWidth
-                      name="password"
-                      label="Password"
-                      type="password"
-                      id="password"
-                      autoComplete="current-password"
-                      className={classes.root}
-                      onChange={(event) => myContext.setLoginpassword(event.target.value)}
-                      sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
-                      />
-                      <FormControlLabel
-                      control={<Checkbox value="remember" color="primary" />}
-                      label="Remember me"
                       />
                       <Button
                       type="submit"
                       fullWidth
                       variant="contained"
                       sx={{ mx: 'auto', fontWeight: 590, alignItems: 'center'}}
-                      href="/SCNlist"
                       >
-                      Login
+                      Issue
                       </Button>
+                      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="Transfer Amount"
+                      label="Transfer Amount"
+                      type="Transfer Amount"
+                      id="Transfer Amount"
+                      autoComplete="Transfer Amount"
+                      className={classes.root}
+                      sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
+                      />
+                      <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mx: 'auto', fontWeight: 590, alignItems: 'center'}}
+                      >
+                      Transfer
+                      </Button>
+                      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                      <TextField
+                      margin="normal"
+                      required
+                      fullWidth
+                      name="Redeem Amount"
+                      label="Redeem Amount"
+                      type="Redeem Amount"
+                      id="Redeem Amount"
+                      autoComplete="Redeem Amount"
+                      className={classes.root}
+                      sx={{ label: { color: '#ffffffdb' }, input: { color: '#ffffffdb' }}}
+                      />
+                      <Button
+                      type="submit"
+                      fullWidth
+                      variant="contained"
+                      sx={{ mx: 'auto', fontWeight: 590, alignItems: 'center'}}
+                      >
+                      Redeem
+                      </Button>
+                      <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
                       <Grid container>
                           <Grid item>
                               <Link href="/sign-up" variant="body2" style={{ color: 'darkgrey' }}>
-                                  Don't have an account? <span style={{color: 'cornflowerblue'}}>Sign Up</span>
+                                  <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
                               </Link>
                           </Grid>
                       </Grid>
@@ -194,7 +217,7 @@ const Login = ({
   );
 }
 
-Login.propTypes = propTypes;
-Login.defaultProps = defaultProps;
+OperationBoard.propTypes = propTypes;
+OperationBoard.defaultProps = defaultProps;
 
-export default Login;
+export default OperationBoard;
